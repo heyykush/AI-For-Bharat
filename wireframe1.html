@@ -1,0 +1,558 @@
+<div
+  class="export-wrapper"
+  style="
+    width: 1440px;
+    min-height: 812px;
+    position: relative;
+    font-family: var(--font-family-body);
+    background-color: var(--background);
+  "
+>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <html>
+    <head>
+      <style>
+        * {
+          box-sizing: border-box;
+        }
+        :root {
+          --background: #ffffff;
+          --foreground: #000000;
+          --muted: #f5f5f5;
+          --muted-foreground: #666666;
+          --border: #dddddd;
+          --primary: #000000;
+          --primary-foreground: #ffffff;
+          --secondary: #e5e5e5;
+          --secondary-foreground: #000000;
+          --font-family-body: system-ui, -apple-system, sans-serif;
+        }
+        .export-wrapper {
+          margin: 0;
+          font-family: var(--font-family-body);
+          background: var(--background);
+          color: var(--foreground);
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+        }
+      </style>
+
+      <style id="layout-styles">
+        .app-container {
+          display: flex;
+          flex: 1;
+          overflow: hidden;
+        }
+        .main-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          overflow-y: auto;
+          padding: 24px;
+          gap: 24px;
+          background: #fdfdfd;
+        }
+        .grid-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto auto;
+          gap: 24px;
+          flex: 1;
+        }
+        .section-box {
+          border: 1px solid #000000;
+          padding: 20px;
+          background: #ffffff;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .footer-strip {
+          border: 1px solid #000000;
+          padding: 20px;
+          background: #ffffff;
+          margin-top: auto;
+        }
+      </style>
+
+      <style id="component-styles">
+        .nav-bar {
+          height: 60px;
+          border-bottom: 2px solid #000000;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 24px;
+          background: #ffffff;
+          flex-shrink: 0;
+        }
+        .nav-links {
+          display: flex;
+          gap: 24px;
+        }
+        .nav-item {
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+        .sidebar {
+          width: 260px;
+          border-right: 2px solid #000000;
+          background: #ffffff;
+          display: flex;
+          flex-direction: column;
+          padding: 24px;
+          gap: 32px;
+          flex-shrink: 0;
+        }
+        .user-profile {
+          border: 1px solid #000000;
+          padding: 16px;
+          background: #f0f0f0;
+        }
+        .menu-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .menu-item {
+          padding: 10px;
+          border: 1px solid #cccccc;
+          font-size: 14px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .menu-item.active {
+          background: #000000;
+          color: #ffffff;
+          border-color: #000000;
+        }
+        .wireframe-btn {
+          background: #000000;
+          color: #ffffff;
+          padding: 10px 16px;
+          font-size: 14px;
+          font-weight: 600;
+          text-align: center;
+          border: none;
+          cursor: pointer;
+          width: fit-content;
+        }
+        .wireframe-btn.secondary {
+          background: #ffffff;
+          color: #000000;
+          border: 1px solid #000000;
+        }
+        .section-title {
+          font-size: 16px;
+          font-weight: 700;
+          text-transform: uppercase;
+          border-bottom: 1px solid #000000;
+          padding-bottom: 8px;
+          margin-bottom: 8px;
+        }
+        .input-group {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .input-field {
+          border: 1px solid #999999;
+          height: 36px;
+          padding: 0 12px;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          background: #ffffff;
+        }
+        .scheme-card {
+          border: 1px solid #999999;
+          padding: 12px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .step-item {
+          display: flex;
+          gap: 12px;
+          align-items: flex-start;
+          font-size: 14px;
+        }
+        .step-number {
+          width: 24px;
+          height: 24px;
+          background: #000000;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          font-size: 12px;
+          flex-shrink: 0;
+        }
+        .upload-box {
+          border: 2px dashed #999999;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          color: #666666;
+          background: #f9f9f9;
+        }
+        .status-item {
+          display: flex;
+          justify-content: space-between;
+          font-size: 13px;
+          padding: 6px 0;
+          border-bottom: 1px solid #eeeeee;
+        }
+        .footer-card {
+          border: 1px solid #cccccc;
+          padding: 12px;
+          min-width: 200px;
+          font-size: 14px;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="nav-bar">
+        <div
+          style="
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: -0.5px;
+            border: 2px solid #000;
+            padding: 4px 12px;
+          "
+        >
+          NAVIGATOR
+        </div>
+        <div class="nav-links">
+          <div class="nav-item" style="text-decoration: underline">
+            Dashboard
+          </div>
+          <div class="nav-item">My Schemes</div>
+          <div class="nav-item">Applications</div>
+          <div class="nav-item">Upload Documents</div>
+          <div class="nav-item">Alerts</div>
+          <div class="nav-item">Help</div>
+        </div>
+      </div>
+
+      <div class="app-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+          <div class="user-profile">
+            <div style="font-weight: 700; margin-bottom: 4px">Rajesh Kumar</div>
+            <div style="font-size: 13px; color: #444; margin-bottom: 2px">
+              State: Maharashtra
+            </div>
+            <div style="font-size: 13px; color: #444">Income: ₹2.5L - ₹5L</div>
+          </div>
+
+          <div class="menu-list">
+            <div class="menu-item active">
+              <div style="width: 16px; height: 16px; background: #fff"></div>
+              Eligibility Check
+            </div>
+            <div class="menu-item">
+              <div
+                style="width: 16px; height: 16px; border: 1px solid #000"
+              ></div>
+              Process Navigator
+            </div>
+            <div class="menu-item">
+              <div
+                style="width: 16px; height: 16px; border: 1px solid #000"
+              ></div>
+              Document Checker
+            </div>
+            <div class="menu-item">
+              <div
+                style="width: 16px; height: 16px; border: 1px solid #000"
+              ></div>
+              Office Locator
+            </div>
+            <div class="menu-item">
+              <div
+                style="width: 16px; height: 16px; border: 1px solid #000"
+              ></div>
+              Opportunity Alerts
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <div class="grid-container">
+            <!-- Section A: Eligibility Form -->
+            <div class="section-box">
+              <div class="section-title">Check Your Eligibility</div>
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px"
+              >
+                <div class="input-group">
+                  <label style="font-size: 12px; font-weight: 600">Age</label>
+                  <div class="input-field">34</div>
+                </div>
+                <div class="input-group">
+                  <label style="font-size: 12px; font-weight: 600"
+                    >Occupation</label
+                  >
+                  <div class="input-field">Small Business Owner ▾</div>
+                </div>
+                <div class="input-group" style="grid-column: span 2">
+                  <label style="font-size: 12px; font-weight: 600"
+                    >Monthly Income Range</label
+                  >
+                  <div class="input-field">₹20,000 - ₹40,000 ▾</div>
+                </div>
+                <div class="input-group">
+                  <label style="font-size: 12px; font-weight: 600">State</label>
+                  <div class="input-field">Maharashtra ▾</div>
+                </div>
+                <div class="input-group">
+                  <label style="font-size: 12px; font-weight: 600"
+                    >District</label
+                  >
+                  <div class="input-field">Pune ▾</div>
+                </div>
+              </div>
+              <button
+                class="wireframe-btn"
+                style="width: 100%; margin-top: auto"
+              >
+                Find Eligible Schemes
+              </button>
+            </div>
+
+            <!-- Section B: Eligible Schemes -->
+            <div class="section-box">
+              <div class="section-title">Eligible Schemes</div>
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <div class="scheme-card">
+                  <div style="display: flex; justify-content: space-between">
+                    <span style="font-weight: 700">PM Mudra Yojana</span>
+                    <span
+                      style="
+                        font-size: 12px;
+                        background: #000;
+                        color: #fff;
+                        padding: 2px 6px;
+                      "
+                      >95% Match</span
+                    >
+                  </div>
+                  <div style="font-size: 13px; color: #444">
+                    Business loan support for micro-enterprises up to ₹10L.
+                  </div>
+                  <div style="display: flex; gap: 8px; margin-top: 4px">
+                    <button
+                      class="wireframe-btn secondary"
+                      style="font-size: 12px; padding: 6px 12px"
+                    >
+                      View Details
+                    </button>
+                    <button
+                      class="wireframe-btn"
+                      style="font-size: 12px; padding: 6px 12px"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+                <div class="scheme-card">
+                  <div style="display: flex; justify-content: space-between">
+                    <span style="font-weight: 700">Skill India Mission</span>
+                    <span
+                      style="
+                        font-size: 12px;
+                        border: 1px solid #000;
+                        padding: 2px 6px;
+                      "
+                      >80% Match</span
+                    >
+                  </div>
+                  <div style="font-size: 13px; color: #444">
+                    Vocational training programs for youth employment.
+                  </div>
+                  <div style="display: flex; gap: 8px; margin-top: 4px">
+                    <button
+                      class="wireframe-btn secondary"
+                      style="font-size: 12px; padding: 6px 12px"
+                    >
+                      View Details
+                    </button>
+                    <button
+                      class="wireframe-btn"
+                      style="font-size: 12px; padding: 6px 12px"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section C: Process Navigator -->
+            <div class="section-box">
+              <div class="section-title">Application Guide</div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 12px;
+                  margin-top: 8px;
+                "
+              >
+                <div class="step-item">
+                  <div class="step-number">1</div>
+                  <div>Fill Application Form (Online/Offline)</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">2</div>
+                  <div>Submit Required Documents</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">3</div>
+                  <div>Verification by Authority</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">4</div>
+                  <div>Certificate Issued</div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  border-top: 1px solid #ccc;
+                  padding-top: 12px;
+                  margin-top: 12px;
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 13px;
+                "
+              >
+                <div><strong>Timeline:</strong> 7–14 days</div>
+                <div><strong>Official Fee:</strong> ₹50</div>
+              </div>
+              <button
+                class="wireframe-btn secondary"
+                style="width: 100%; margin-top: auto"
+              >
+                View Full Guide
+              </button>
+            </div>
+
+            <!-- Section D: AI Document Checker -->
+            <div class="section-box">
+              <div class="section-title">Document Validation</div>
+              <div class="upload-box">Drag &amp; Drop Documents</div>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <div class="status-item">
+                  <span>Aadhaar Card</span>
+                  <span style="font-weight: 700">✓ Valid</span>
+                </div>
+                <div class="status-item">
+                  <span>Income Certificate</span>
+                  <span style="font-weight: 700; text-decoration: underline"
+                    >! Expired</span
+                  >
+                </div>
+                <div class="status-item">
+                  <span>Residence Proof</span>
+                  <span style="font-weight: 700; text-decoration: underline"
+                    >! Address Mismatch</span
+                  >
+                </div>
+              </div>
+              <button
+                class="wireframe-btn"
+                style="width: 100%; margin-top: auto"
+              >
+                Fix Issues
+              </button>
+            </div>
+          </div>
+
+          <!-- Footer Strip -->
+          <div class="footer-strip">
+            <div style="font-weight: 700; margin-bottom: 12px; font-size: 15px">
+              Personalized Opportunity Alerts
+            </div>
+            <div style="display: flex; gap: 16px; overflow-x: auto">
+              <div class="footer-card">
+                <div style="font-weight: 600; margin-bottom: 4px">
+                  Skill Development Camp
+                </div>
+                <div style="font-size: 12px; color: #555">
+                  Starts in 3 days • Pune
+                </div>
+              </div>
+              <div class="footer-card">
+                <div style="font-weight: 600; margin-bottom: 4px">
+                  Health Drive
+                </div>
+                <div style="font-size: 12px; color: #555">
+                  Free Checkup • City Hospital
+                </div>
+              </div>
+              <div class="footer-card">
+                <div style="font-weight: 600; margin-bottom: 4px">
+                  Scholarship Deadline
+                </div>
+                <div style="font-size: 12px; color: #555">
+                  Pre-Matric • Apply by Friday
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+  <style>
+    :root {
+      --background: #ffffff;
+      --foreground: #0a0a0a;
+      --border: #bdbdbd;
+      --input: #f7f7f7;
+      --primary: #000000;
+      --primary-foreground: #ffffff;
+      --secondary: #f2f2f2;
+      --secondary-foreground: #3a3a3a;
+      --muted: #fafafa;
+      --muted-foreground: #9b9b9b;
+      --success: #e6f3ea;
+      --success-foreground: #2b7a3a;
+      --accent: #d9d9d9;
+      --accent-foreground: #2b2b2b;
+      --destructive: #ffffff;
+      --destructive-foreground: #404040;
+      --warning: #fff7e6;
+      --warning-foreground: #8a5a00;
+      --card: #ffffff;
+      --card-foreground: #111111;
+      --sidebar: #ffffff;
+      --sidebar-foreground: #3f3f3f;
+      --sidebar-primary: #595959;
+      --sidebar-primary-foreground: #ffffff;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-xl: 48px;
+      --font-family-body: Shantell Sans;
+    }
+  </style>
+</div>
