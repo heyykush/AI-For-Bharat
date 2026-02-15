@@ -19,6 +19,8 @@ Low digital literacy makes navigation difficult
 
 As a result, eligible citizens fail to access benefits designed for them.
 
+/--------------------------------------------|------------------------------------------------\
+
 💡 Our Solution
 
 We built an AI-powered Personalized Public-Service Guide that acts as a digital assistant for citizens.
@@ -36,6 +38,8 @@ Find relevant local offices
 Avoid scams and misinformation
 
 Our assistant simplifies complex government systems into clear, actionable guidance.
+
+/--------------------------------------------|------------------------------------------------\
 
 🎯 Key Features (MVP)
 1️⃣ Eligibility Detector Engine
@@ -102,6 +106,8 @@ Advises against unofficial agents
 
 Recommends official sources only
 
+/--------------------------------------------|------------------------------------------------\
+
 🧭 User Journey
 
 User completes short intake form
@@ -134,6 +140,8 @@ Data: Verified scheme eligibility rules + process flows
 
 The system prioritizes clarity, explainability, and reliability over complexity.
 
+/--------------------------------------------|------------------------------------------------\
+
 📊 Impact
 Social Impact
 
@@ -161,6 +169,8 @@ Cuts down common queries
 
 Improves transparency and service efficiency
 
+/--------------------------------------------|------------------------------------------------\
+
 🚀 Innovation
 
 Unlike existing government portals, our solution is:
@@ -177,6 +187,8 @@ Unlike existing government portals, our solution is:
 
 It does not just list schemes — it acts like a personal guide.
 
+/--------------------------------------------|------------------------------------------------\
+
 🔮 Future Scope
 
 WhatsApp / Voice-based assistant
@@ -190,6 +202,8 @@ DigiLocker integration
 Smart appointment scheduling
 
 Real-time API integration with public systems
+
+/--------------------------------------------|------------------------------------------------\
 
 🌟 Why This Matters
 
